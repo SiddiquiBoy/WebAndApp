@@ -1,0 +1,11 @@
+<suite thread-count="1" verbose="1" name="CommunityX Test Suit"
+	annotations="JDK" parallel="tests">
+	<test name="All Test">
+		<classes>
+			<class name="com.qhl.testcases.LoginTest" />
+			<class name="com.qhl.testcases.xyzTest" />
+			
+		</classes>
+	</test>
+
+</suite>
