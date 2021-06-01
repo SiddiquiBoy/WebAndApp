@@ -11,17 +11,27 @@ import java.util.List;
 import java.util.Random;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.bajajChetak.pages.ChetakHomePage;
 import com.google.common.io.Files;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 public class Apputil {
 	public static AndroidDriver<WebElement> driver;
@@ -32,6 +42,7 @@ public class Apputil {
 	/* for reporting */
 	public ExtentReports extent;
 	public ExtentTest logger;
+
 
 	@BeforeSuite
 	public void report_setup() {
@@ -53,7 +64,7 @@ public class Apputil {
 		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "Android Emulator");
 		dc.setCapability(MobileCapabilityType.APP, Apk_path); // pass the path of the App
 		dc.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-		// dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9.0"); // you can
+		dc.setCapability(MobileCapabilityType.PLATFORM_VERSION, "11.0"); // you can
 		// set the version for virtual device
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");// this is the appium server path
 		driver = new AndroidDriver<WebElement>(url, dc);
